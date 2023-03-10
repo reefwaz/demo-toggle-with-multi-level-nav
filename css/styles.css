@@ -38,10 +38,12 @@ h1 a {
 
 h2 {
     font-size: 3.125rem;
+    margin-bottom: 1.5rem;
 }
 
 p {
     margin-bottom: 1.5rem;
+    max-width: 70ch;
 }
 
 /* **************** Header **************** */
@@ -67,7 +69,19 @@ header {
 }
 
 header nav {
-    flex: 1 0 100%;
+    position: absolute;
+    left: 0;
+    top: 88px;
+    width: 75vw;
+    background-color: var(--navy);
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease-in-out;
+}
+
+.show-nav {
+    max-height: 28rem;
 }
 
 ul.menu {
@@ -91,9 +105,12 @@ ul.menu li {
     margin: 0.5rem 0;
 }
 
-
 a.first-link {
     font-size: 1.3rem;
+}
+
+ svg {
+    display: none;
 }
 
 ul.submenu {
@@ -116,7 +133,91 @@ ul.utility-nav a {
     display: inline-block;
 }
 
-
 section {
     padding: 3.125rem;
+}
+
+@media screen and (min-width: 850px) {
+    .toggle-btn {
+        display: none;
+    }
+
+    header nav {
+        max-height: 28rem;
+        position: static;
+        overflow: visible;
+        width: auto;
+        padding: 0;
+        display: flex;
+        gap: 3rem;
+    }
+
+    ul.menu {
+        display: flex;
+        gap: 1.5rem;
+        border: none;
+    }
+
+    ul.menu li {
+        position: relative;
+    }
+
+    ul.submenu {
+        text-align: right;
+        padding: 0 1rem;
+        position: absolute;
+        left: 35px;
+        top: 0;
+        background-color: var(--navy);
+        white-space: nowrap;
+        width: 100%;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    ul.menu li:hover > ul.submenu {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    ul.menu li:focus-within > ul, 
+    ul.menu li > ul:focus{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    ul.manu,
+    ul.utility-nav {
+        margin: 0
+    }
+
+    .first-link {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    svg {
+        width: 1rem;
+        fill: var(--off-white);
+        display: inline-block;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .gallery-img {
+        display: flex;
+        align-items: flex-start;
+    }   
+    
+    .gallery-img img {
+        width: 50%;
+    }
+
+    .gallery-img img:last-of-type {
+        position: relative;
+        top: 100px;
+        right: 150px;
+    }
 }
